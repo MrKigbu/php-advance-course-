@@ -1,0 +1,5 @@
+{
+    "terminal.integrated.defaultLocation": "editor",
+    "git.terminalGitEditor": true,
+    "terminal.sourceControlRepositoriesKind": "integrated"
+}
