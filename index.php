@@ -1,68 +1,42 @@
 <?php
-// defined custom class 
-class Fruit 
-{
-    // properties 
+class Fruit {
     public $name;
-    protected $color;
-    private $weight;
-   // public function __construct($name, $color)
-   // {
-   //     $this->name = $name;
-  //      $this->color = $color;
-  //  }
-    
-    
-    // get name method
-    public function get_name()
-    {
-       return $this->name;
-   }
+    public $color;
 
-   //set name 
-   protected function set_name ($name)
-   {
-   $this->$name= $name; 
-   }
-
-   
-    
-    // get color method
-    private function get_color()
-    {
-        return $this->color;
+    // constructor
+    public function __construct($name, $color) {
+        $this->name = $name;
+        $this->color = $color;
     }
-    //destruct 
-   // public function __destruct()
-   // {
-   //     echo "The fruit is {$this->name} and the color is {$this->color}.";
-   // }
+
+    // method
+    public function intro() {
+        echo "The fruit is {$this->name} and the color is {$this->color}.<br>";
+    }
 }
 
-// define the object 
-$apple = new Fruit();
-//$apple->name= "Apple";
-//echo $apple->name;
-//$apple->color = "New Color";
-//$apple->weight = "12kg";
-$apple->set_name("Apple");
-$apple->get_name();
-$apple->get_color();
+// Strawberry is inherited from Fruit
+class Strawberry extends Fruit
+{
+    public function message()
+    {
+        echo $this->name;
+        echo "<br/>";
+        echo $this->color;
+    }
 
-// banana
-//$banana = new Fruit("Banana2", "Green");
+    public function addition($num1, $num2)
+    {
+        echo "The sum is " . ($num1 + $num2) . "<br>";
+    }
+}
 
-// result 
-//echo $banana->get_name();
-//echo $banana->name;
-//echo "<br/>";
+// create an object of Strawberry (not just Fruit)
+$strawberry = new Strawberry("Strawberry", "Red");
 
-//echo $apple->get_name();
-//echo $apple->name;
-//echo "<br/>";
-//echo "<br/>";echo "<br/>";
-//echo $banana->get_color();
-//echo $banana->color;
-//echo "<br/>";
-//echo $apple->get_color();
-//echo $apple->color;
+// call methods
+$strawberry->message();
+$strawberry->addition(5, 10);
+//$strawberry->intro();
+echo $strawberry->name;
+?>
