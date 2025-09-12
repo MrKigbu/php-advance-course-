@@ -4,54 +4,65 @@ class Fruit
 {
     // properties 
     public $name;
-    public $color;
-
-    // method to set name
-    public function set_name($name)
-    {
-        $this->name = $name;
-    }
+    protected $color;
+    private $weight;
+   // public function __construct($name, $color)
+   // {
+   //     $this->name = $name;
+  //      $this->color = $color;
+  //  }
+    
     
     // get name method
     public function get_name()
     {
-        return $this->name;
-    }
+       return $this->name;
+   }
 
-    // method to set color
-    public function set_color($color)
-    {
-        $this->color = $color;
-    }
+   //set name 
+   protected function set_name ($name)
+   {
+   $this->$name= $name; 
+   }
+
+   
     
     // get color method
-    public function get_color()
+    private function get_color()
     {
         return $this->color;
     }
+    //destruct 
+   // public function __destruct()
+   // {
+   //     echo "The fruit is {$this->name} and the color is {$this->color}.";
+   // }
 }
 
 // define the object 
 $apple = new Fruit();
+//$apple->name= "Apple";
+//echo $apple->name;
+//$apple->color = "New Color";
+//$apple->weight = "12kg";
 $apple->set_name("Apple");
-$apple->set_color("Blue");
+$apple->get_name();
+$apple->get_color();
 
 // banana
-$banana = new Fruit();
-$banana->set_name("Banana");
-$banana->set_color("Green");
+//$banana = new Fruit("Banana2", "Green");
 
 // result 
 //echo $banana->get_name();
-echo $banana->name;
-echo "<br/>";
+//echo $banana->name;
+//echo "<br/>";
 
 //echo $apple->get_name();
-echo $apple->name;
-echo "<br/>";
-echo "<br/>";echo "<br/>";
+//echo $apple->name;
+//echo "<br/>";
+//echo "<br/>";echo "<br/>";
 //echo $banana->get_color();
-echo $banana->color;
-echo "<br/>";
+//echo $banana->color;
+//echo "<br/>";
 //echo $apple->get_color();
-echo $apple->color;
+//echo $apple->color;
