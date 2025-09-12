@@ -1,56 +1,102 @@
 <?php
-// Define trait
-trait Message1 {
-    public function msg1() {
-        echo "OOP is fun!<br>";
+//define static method 
+class Greeting 
+{
+    // public function __construct($num1, $num2)
+    // {
+    //     echo self::addNumber($num1, $num2);
+   // }
+    protected  static function welcome($msg)
+    {
+        echo $msg;
     }
-
-    // Addition
-    public function addnumber($num1, $num2) {
+    
+    //add number 
+    public static function addNumber ($num1, $num2)
+    {
         return $num1 + $num2;
     }
 }
-//trait 2
-trait message2
-{
 
-    public function msg2()
+class NewArea extends Greeting {
+    public static function addnewdata($msg)
     {
-        echo "OOP reduces code duplication!";
+        Greeting::welcome ($msg);
     }
 }
-// Class Welcome
-class Welcome {
-    use Message1, Message2;
+NewArea::addnewdata("Hello world, I am from keffi");
+//sammy na you do this one oh
 
-    // Multiply number
-    public function multiplynumber($num1, $num2) {
-        return $num1 * $num2;
-    }
-}
+// class domain {
+//     protected static function getWebsiteName () {
+//         return "AQskill.com";
+//     }
+// }
+// class domainAQ extends domain {
+//     public $websiteName;
+//     public function __construct() {
+//         $this->getWebsiteName = parent ::getWebsiteName();
+//     }
+// }
+// $domainAQ = new domainAQ;
+// echo $domanW3->getWebsiteName;
 
-// Another class using the same trait
-class TestingClass {
-    use Message1;
+//call static method 
+// Greeting::welcome();
+// echo Greeting::addNumber(1,2);
 
-    // Multiply number
-    public function multiplynumber($num1, $num2) {
-        return $num1 * $num2;
-    }
-}
+// Define trait
+// trait Message1 {
+//     public function msg1() {
+//         echo "OOP is fun!<br>";
+//     }
 
-// Create objects
-$obj = new Welcome();
-$obj->msg1();
-echo $obj->addnumber(10, 20);
-echo "<br>";
-echo $obj->multiplynumber(10, 20);
-echo "<br><br>";
-$obj->msg2();
+//     // Addition
+//     public function addnumber($num1, $num2) {
+//         return $num1 + $num2;
+//     }
+// }
+// //trait 2
+// trait message2
+// {
 
-$obj2 = new TestingClass();
-$obj2->msg1();
-echo $obj2->multiplynumber(10, 20);
+//     public function msg2()
+//     {
+//         echo "OOP reduces code duplication!";
+//     }
+// }
+// // Class Welcome
+// class Welcome {
+//     use Message1, Message2;
+
+//     // Multiply number
+//     public function multiplynumber($num1, $num2) {
+//         return $num1 * $num2;
+//     }
+// }
+
+// // Another class using the same trait
+// class TestingClass {
+//     use Message1;
+
+//     // Multiply number
+//     public function multiplynumber($num1, $num2) {
+//         return $num1 * $num2;
+//     }
+// }
+
+// // Create objects
+// $obj = new Welcome();
+// $obj->msg1();
+// echo $obj->addnumber(10, 20);
+// echo "<br>";
+// echo $obj->multiplynumber(10, 20);
+// echo "<br><br>";
+// $obj->msg2();
+
+// $obj2 = new TestingClass();
+// $obj2->msg1();
+// echo $obj2->multiplynumber(10, 20);
 
 
 
