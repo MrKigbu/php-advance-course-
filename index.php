@@ -1,42 +1,67 @@
 <?php
-class Fruit {
+// Abstract parent class
+abstract class Car {
     public $name;
-    public $color;
+    public $number;
 
     // constructor
-    public function __construct($name, $color) {
+    public function __construct($name, $number) {
         $this->name = $name;
-        $this->color = $color;
+        $this->number = $number;
     }
 
-    // method
-    public function intro() {
-        echo "The fruit is {$this->name} and the color is {$this->color}.<br>";
+    // abstract methods (must be implemented in child classes)
+    abstract public function intro(): string;
+    abstract public function int(): int;
+}
+
+// Child class Audi
+class Audi extends Car {
+    public function intro(): string {
+        return "Choose German Quality! I'm a $this->name!";
+    }
+    public function int(): int {
+        return $this->number;
     }
 }
 
-// Strawberry is inherited from Fruit
-class Strawberry extends Fruit
-{
-    public function message()
-    {
-        echo $this->name;
-        echo "<br/>";
-        echo $this->color;
+// Child class Volvo
+class Volvo extends Car {
+    public function intro(): string {
+        return "Proud to be Swedish! I'm a $this->name!";
     }
-
-    public function addition($num1, $num2)
-    {
-        echo "The sum is " . ($num1 + $num2) . "<br>";
+    public function int(): int {
+        return $this->number;
     }
 }
 
-// create an object of Strawberry (not just Fruit)
-$strawberry = new Strawberry("Strawberry", "Red");
+// Child class Citroen
+class Citroen extends Car {
+    public function intro(): string {
+        return "French Extravagance! I'm a $this->name!";
+    }
+    public function int(): int {
+        return $this->number;
+    }
+}
 
-// call methods
-$strawberry->message();
-$strawberry->addition(5, 10);
-//$strawberry->intro();
-echo $strawberry->name;
+// create objects from the child classes 
+$audi = new Audi("Audi", 50);
+$volvo = new Volvo("Volvo", 2);
+$citroen = new Citroen("Citroen", 45);
+
+// get the values 
+echo $audi->intro();
+echo "<br>";
+echo $volvo->intro();
+echo "<br>";
+echo $citroen->intro();
+echo "<br>";
+
+// get the int values 
+echo $audi->int();
+echo "<br>";
+echo $volvo->int();
+echo "<br>";
+echo $citroen->int();
 ?>
