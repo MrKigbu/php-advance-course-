@@ -1,67 +1,53 @@
 <?php
-// Abstract parent class
-abstract class Car {
-    public $name;
-    public $number;
-
-    // constructor
-    public function __construct($name, $number) {
-        $this->name = $name;
-        $this->number = $number;
-    }
-
-    // abstract methods (must be implemented in child classes)
-    abstract public function intro(): string;
-    abstract public function int(): int;
+// ---------------- INTERFACE DEMO ----------------
+interface Animal {
+    public function makesound();
+    public function eat(): string;
 }
 
-// Child class Audi
-class Audi extends Car {
-    public function intro(): string {
-        return "Choose German Quality! I'm a $this->name!";
+class Cat implements Animal {
+    public function makesound() {
+        echo "Meow<br>";
     }
-    public function int(): int {
-        return $this->number;
+
+    public function eat(): string {
+        return "Cat is eating<br>";
     }
 }
 
-// Child class Volvo
-class Volvo extends Car {
-    public function intro(): string {
-        return "Proud to be Swedish! I'm a $this->name!";
+// Child class Dog
+class Dog implements Animal {
+    public function makesound() {
+        echo "Woof<br>";
     }
-    public function int(): int {
-        return $this->number;
-    }
-}
 
-// Child class Citroen
-class Citroen extends Car {
-    public function intro(): string {
-        return "French Extravagance! I'm a $this->name!";
-    }
-    public function int(): int {
-        return $this->number;
+    public function eat(): string {
+        return "Dog is eating<br>";
     }
 }
 
-// create objects from the child classes 
-$audi = new Audi("Audi", 50);
-$volvo = new Volvo("Volvo", 2);
-$citroen = new Citroen("Citroen", 45);
+// Child class Mouse
+class Mouse implements Animal {
+    public function makesound() {
+        echo "Squeak<br>";
+    }
 
-// get the values 
-echo $audi->intro();
-echo "<br>";
-echo $volvo->intro();
-echo "<br>";
-echo $citroen->intro();
-echo "<br>";
+    public function eat(): string {
+        return "Mouse is eating<br>";
+    }
+}
 
-// get the int values 
-echo $audi->int();
-echo "<br>";
-echo $volvo->int();
-echo "<br>";
-echo $citroen->int();
+// Make instances of the classes
+$cat = new Cat();
+$dog = new Dog();
+$mouse = new Mouse();
+
+// Add objects to an array
+$animals = array($cat, $dog, $mouse);
+
+// Tell the animals to make a sound and eat
+foreach ($animals as $animal) {
+    $animal->makesound();
+    echo $animal->eat();
+}
 ?>
