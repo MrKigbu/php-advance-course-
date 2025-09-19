@@ -9,6 +9,17 @@ class Request
     {
         return trim(dirname($_SERVER['SCRIPT_NAME']), '/');
     }
+
+    //Base URL
+    public static function baseurl() 
+    {
+        //check if ssl is added to the url
+        if (!self::secure()) {
+            return 'http://' . $_SERVER['HTTP_HOST'] . '/' . self::base();
+        } else {
+            return 'https://' . $_SERVER['HTTP_HOST'] . '/' . self::base();
+        }
+    }
     //uri
     public static function uri()
 {
