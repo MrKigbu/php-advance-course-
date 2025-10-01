@@ -1,20 +1,20 @@
 <?php return array(
     'root' => array(
-        'name' => '__root__',
+        'name' => 'mrkigbu/php-advance-course',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '68bd4926377e894144c026c90347697b08f99cae',
-        'type' => 'library',
+        'reference' => 'ac15e770cb8f9469ee5e35e2af501da9020c4830',
+        'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
+        'mrkigbu/php-advance-course' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '68bd4926377e894144c026c90347697b08f99cae',
-            'type' => 'library',
+            'reference' => 'ac15e770cb8f9469ee5e35e2af501da9020c4830',
+            'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
