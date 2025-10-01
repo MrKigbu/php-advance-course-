@@ -20,6 +20,23 @@ class Request
             return 'https://' . $_SERVER['HTTP_HOST'] . '/' . self::base();
         }
     }
+
+    //input
+    public static function input($key = null, $default = null)
+    {
+        //check if key exist in any of the request 
+        if (isset($_REQUEST[$key])) {
+            return $_REQUEST[$key];
+        }
+        // return null
+        return null;
+    }
+    //all
+    public static function all()
+    {
+        return $_REQUEST;
+    }
+
     //uri
     public static function uri()
 {

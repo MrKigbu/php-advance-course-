@@ -1,9 +1,8 @@
 <?php
-ade_include('layout/header');
+ade_include('auth/layout/header');
 ?>
 
-{{content}}
+{{contentAuth}}
 
 <?php
-ade_include('layout/footer');
-?>
+ade_include('auth/layout/footer');

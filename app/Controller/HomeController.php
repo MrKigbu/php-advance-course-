@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Controller;
+
+use App\Core\Model;
 use App\Core\Request;
+use App\Core\Database;
 
 
 class HomeController 
@@ -20,6 +23,7 @@ class HomeController
     //register page
         public static function register(Request $request)
     {
+       
         return view('auth/register');
     } 
     //About 
@@ -45,4 +49,5 @@ class HomeController
         
         
     }
+    
 }

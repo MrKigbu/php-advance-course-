@@ -29,5 +29,22 @@ class MiddleWare
         //return true
         return ['code' => 200];
     }
+
+    //admin
+    public static function  admin()
+    {
+        $session = new Session;
+        if(!$session->has('user') || $session->get('user')['role'] !== 'admin')
+        {
+            return ['error' => 'You are not authorized to access this page', 'code' => 403, 'redirect' => '/login'];
+        }
+        $user = $session->get('user');
+        if($user['role'] !== 'admin')
+        {
+            return ['error' => 'You are not authorized to access this page', 'code' => 403, 'redirect' => '/login'];
+        }
+        //return true
+        return ['code' => 200];
+    }
     
 }

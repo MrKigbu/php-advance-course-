@@ -25,7 +25,7 @@
   <!-- Navbar Transparent -->
   <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
     <div class="container">
-      <a class="navbar-brand  text-white " href="https://demos.creative-tim.com/soft-ui-design-system/presentation.html" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
+      <a class="navbar-brand  text-white " href="<?php echo url('/') ?>" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
         VTU PROJECT
       </a>
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,8 +59,8 @@
           <div class="col-lg-8 text-center mx-auto my-auto">
             <h1 class="text-white">Welcome to VTU APP </h1>
             <p class="lead mb-4 text-white opacity-8">VTU App helps with Airtime Top up and data bundle for all network in Nigeria</p>
-            <button type="submit" class="btn bg-white text-dark">Create Account</button>
-            <button type="submit" class="btn bg-gradient-warning text-dark">Sign in</button>
+            <a href="<?php echo url('register') ?>" class="btn bg-white text-dark">Create Account</a>
+            <a href="<?php echo url('login') ?>" class="btn bg-gradient-warning text-dark">Sign in</a>
             <h6 class="text-white mb-2 mt-5">Find us on</h6>
             <div class="d-flex justify-content-center">
               <a href="javascript:;"><i class="fab fa-facebook text-lg text-white me-4"></i></a>

@@ -94,3 +94,70 @@ if(!function_exists('redirect')){
         return \App\Core\Route::redirect($url);
     }
 }
+
+//base_url
+//check if function exists
+if(!function_exists('baseurl')){
+    //baseurl
+    function baseurl()
+    {
+        return App\Core\Request::baseurl();
+    }
+}
+
+//assets
+//check if function exists
+if(!function_exists('assets')){
+    //assets
+    function assets($path)
+    {
+        return \App\Core\Component::assets($path);
+        
+    }
+}
+//url
+//check if function exists
+if(!function_exists('url')){
+    //url
+    /** generate url
+     * @param string $path
+     * @return string
+     */
+    function url($path)
+    {
+        return \App\Core\Component::url($path);
+        
+    }
+}
+
+//response json
+//check if function exists
+if(!function_exists('response_json')){
+    //response json
+    function response_json($array)
+    {
+        return \App\Core\Component::response_json($array);
+        
+    }
+}
+
+//CleanPhone
+//check if function exists
+if(!function_exists('cleanPhone')){
+    //clean phone
+    function cleanPhone($phone)
+    {
+        return \App\Core\Component::cleanPhone($phone);
+        
+    }
+}
+
+//auth
+//check if function exists
+if(!function_exists('auth')){
+    function auth()
+{
+    $auth = new \App\Core\Authentication();
+    return $auth->instance();
+}
+}

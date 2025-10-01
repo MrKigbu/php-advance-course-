@@ -34,6 +34,20 @@ class Component
         //return $url
         return $html;
     }
+
+    //asset
+    public static function assets($path)
+    {
+        $baseurl = baseurl();
+        return rtrim($baseurl, '/') . '/' . ltrim($path, '/');
+    }
+    
+    //url
+    public static function url($path)
+    {
+        $baseurl = baseurl();
+        return rtrim($baseurl, '/') . '/' . ltrim($path, '/');
+    }
     
     //sanitize_string 
     
@@ -84,5 +98,34 @@ class Component
         //return url
         return $url;
     }
+
+    //respose json
+    public static function response_json($array = [])
+    {
+        header('Content-Type: application/json');
+        //check if $array is array
+        if (!is_array($array)) {
+            $array = [$array];
+        }
+        echo json_encode($array);
+        die;
+    }
+
+    //clean phone number
+    public static function cleanPhone($phone_number)
+    {
+        //check if phone number is empty
+        if (empty($phone_number)) {
+            return $phone_number;
+        }
+        //check if phone number is string 
+        if (is_string($phone_number)){
+            return preg_replace('/[^0-9]/', '', $phone_number);
+        }
+        //return phone number
+                return $phone_number;
+
+    }
+
 }
 
