@@ -29,4 +29,30 @@ class UserController
         
         return view('pages/profile');         
     }
+    //airtime
+    public static function airtime(Request $request)
+    {
+        
+        return view('pages/airtime');         
+    }
+    //data
+    public static function data(Request $request)
+    {
+        
+        return view('pages/data');         
+    }
+    //subscription
+    public static function subscription(Request $request)
+    {
+        
+        return view('pages/subscription');         
+    }
+
+    //Transactions
+    public static function Transactions(Request $request)
+    {
+        
+        return view('pages/Transactions');         
+    }
+
 }

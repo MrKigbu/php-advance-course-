@@ -29,7 +29,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" " target="_blank">
         <img src="<?php echo assets('assets_admin/img/logo-ct-dark.png'); ?>" class="navbar-brand-img h-100" alt="main_logo">
-<span class="ms-1 font-weight-bold">VTU Dashboard PRO</span>
+<span class="ms-1 font-weight-bold">VTU Dashboard </span>
 
       </a>
     </div>
@@ -63,9 +63,48 @@
         <li class="nav-item">
           <a  href="<?php echo url('user/wallet'); ?>" class="nav-link" role="button">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-              <i class="fa-solid fa-money-check-dollar text-dark"></i>
+              <i class="fa-solid fa-money-check-dollar text-primary"></i>
             </div>
             <span class="nav-link-text ms-1">Wallet</span>
+          </a>
+          
+        </li>
+        <li class="nav-item">
+          <a  href="<?php echo url('user/airtime'); ?>" class="nav-link" role="button">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+              <i class="fa-solid fa-bank text-primary"></i>
+            </div>
+            <span class="nav-link-text ms-1">Buy airtime</span>
+          </a>
+          
+        </li>
+        <li class="nav-item">
+          <a  href="<?php echo url('user/data'); ?>" class="nav-link" role="button">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+              <i class="fa-solid fa-tags text-primary"></i>
+
+            </div>
+            <span class="nav-link-text ms-1">Buy data</span>
+          </a>
+          
+        </li>
+        <li class="nav-item">
+          <a  href="<?php echo url('user/subscription'); ?>" class="nav-link" role="button">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+              <i class="fa-solid fa-box-open text-primary"></i>
+
+            </div>
+            <span class="nav-link-text ms-1">Tv Subscription</span>
+          </a>
+          
+        </li>
+        <li class="nav-item">
+          <a  href="<?php echo url('user/Transactions'); ?>" class="nav-link" role="button">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+              <i class="fa-solid fa-rotate text-primary"></i>
+
+            </div>
+            <span class="nav-link-text ms-1">Transactions</span>
           </a>
           
         </li>

@@ -26,9 +26,9 @@ section('contentDashboard');
               </a>
             </li>
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Wallet</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Data</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Wallet</h6>
+          <h6 class="font-weight-bolder mb-0">Data</h6>
         </nav>
         
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -61,14 +61,14 @@ section('contentDashboard');
         
       <div class ="container-fluid py-4">
     <!--wallet content here-->     
-    <div class="row justify-content-center  mb-5" >
+    <div class="row justify-content-center  mb-10" >
         <div class="col-6">
             <div class="card card-background card-background-mask-info h-100 tilt" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
                 <div class="full-background" style="background-image: url('<?php echo assets('assets_admin/img/curved-images/white-curved.jpeg'); ?>"></div>
                 <div class="card-body pt-4 text-center">
-                  <h2 class="text-white mb-0 mt-2 up">Wallet Balance</h2>
-                  <h1 class="text-white mb-0 up">$25,800</h1>
-                  <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Add more funds to your wallet</span>                  
+                  <h2 class="text-white mb-0 mt-2 up">Data Balance</h2>
+                  <h1 class="text-white mb-0 up">5800 GB</h1>
+                  <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Add more funds to your account</span>                  
                 </div>
               </div>
         </div>  
