@@ -60,7 +60,7 @@ public static function login(Request $request)
         $auth = new Authentication();
          if ($auth->login($user)) {
             response_json(['code' => 200, 'message' => 'login successfull', 
-            'redirect' => url('dashboard')]);
+            'redirect' => url('user/dashboard')]);
         } else {
             //if something happens during login
             response_json(['code' => 500, 'message' => 'Login failed']);
@@ -69,4 +69,14 @@ public static function login(Request $request)
         response_json(['code' => 500, 'message' => $e->getMessage()]);
     }
 }
+//logout
+public static function logout(Request $request)
+{
+   $auth = new Authentication();
+   if ($auth->logout()) {
+       //redirect to login page
+       redirect('/login');
+   } 
+}
+
 }

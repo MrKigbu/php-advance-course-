@@ -10,6 +10,7 @@ $route = new Route;
 $route::get('/', [HomeController::class, 'index']);
 //login
 $route::get('/login', [HomeController::class, 'login']);
+
 //register
 $route::get('/register', [HomeController::class, 'register']);
 
@@ -20,6 +21,9 @@ $route::post('/register-user', [Auth::class, 'register']);
 //post method login
 $route::post('/login-user', [Auth::class, 'login']);
 
+//logout
+$route::get('/logout', [Auth::class, 'logout']);
+
 //middleware route
 $route->middleware('user', function($middleware) use ($route){
     //route user
@@ -28,6 +32,8 @@ $route->middleware('user', function($middleware) use ($route){
     $route::get('/user/dashboard', [UserController::class, 'dashboard'], $middleware);
     //wallet
     $route::get('/user/wallet', [UserController::class, 'wallet'], $middleware);
+    //profile
+    $route::get('/user/profile', [UserController::class, 'profile'], $middleware);
 });
 //blog
 $route::get('/blog/{id}/{title}', [HomeController::class, 'blog']);
@@ -37,7 +43,7 @@ $route::get('/about', [HomeController::class, 'about']);
 //contact
 $route::get('/contact-us', [HomeController::class, 'contact']);
 // inline function 
-$route::get('/area/{id}/{title}', function(Request $request, $args) {
+$route::get('/area/{id}/{title}', function($args) {
     echo "<h1> AREA </h1>";
     var_dump($args);
 });

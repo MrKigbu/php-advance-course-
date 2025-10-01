@@ -157,4 +157,4 @@ pushScript("scripts");
 </script>
 <?php
 endPushScript();
-extend('pages/layout/app', 'contentDashboard');
+extend('auth/layout/app', 'contentAuth');

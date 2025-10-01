@@ -143,7 +143,7 @@ class Route extends MiddleWare
        
 
     //redirect
-    public static function redirect($simpleurl, $args = [])
+    public static function redirect($simpleurl)
     {
         //get base url
         $baseurl = Request::baseurl();

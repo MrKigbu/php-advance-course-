@@ -23,4 +23,10 @@ class UserController
         
         return view('pages/wallet');         
     }
+    //profile
+    public static function profile(Request $request)
+    {
+        
+        return view('pages/profile');         
+    }
 }
