@@ -14,10 +14,6 @@
             "app/helpers/helpers.php"
         ]
     },
-    "require-dev": {
-        "phpunit/phpunit": "^10.0"
-    },
-    "scripts": {
-        "test": "phpunit"
-    }
+    "require-dev": {},
+    "scripts": {}
 }
