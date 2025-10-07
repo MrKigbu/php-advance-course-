@@ -55,4 +55,10 @@ class UserController
         return view('pages/Transactions');         
     }
 
+    //Verify transactions 
+    public static function verifyTransaction(Request $request, $args)
+    {
+        response_json(['code' => 200, 'transaction_id' => $args['transaction_id']]);
+    }
+
 }

@@ -20,6 +20,11 @@
 
   <!-- CSS Files -->
   <link id="pagestyle" href="<?php echo assets('assets_admin/css/soft-ui-dashboard.css?v=1.1.0'); ?>" rel="stylesheet" />
+  <style>
+    .sidenav {
+      z-index: 1030;
+    }
+  </style>
 </head>
 
 

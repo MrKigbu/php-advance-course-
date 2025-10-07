@@ -42,6 +42,9 @@ $route->middleware('user', function($middleware) use ($route){
     $route::get('/user/subscription', [UserController::class, 'subscription'], $middleware);
     //Transactions
     $route::get('/user/Transactions', [UserController::class, 'Transactions'], $middleware);
+    //verify transaction
+    $route::get('/user/verify-transaction/{transaction_id}', [UserController::class, 'verifyTransaction'], $middleware);
+
 });
 //blog
 $route::get('/blog/{id}/{title}', [HomeController::class, 'blog']);

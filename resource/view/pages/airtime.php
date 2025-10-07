@@ -63,24 +63,52 @@ section('contentDashboard');
     <!--wallet content here-->     
     <div class="row justify-content-center  mb-5" >
         <div class="col-6">
-            <div class="card card-background card-background-mask-info h-100 tilt" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
-                <div class="full-background" style="background-image: url('<?php echo assets('assets_admin/img/curved-images/white-curved.jpeg'); ?>"></div>
-                <div class="card-body pt-4 text-center">
-                  <h2 class="text-white mb-0 mt-2 up">Airtime Balance</h2>
-                  <h1 class="text-white mb-0 up">234000</h1>
-                  <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Add more funds to your account</span>                  
+        <div class="card">
+            <div class="card-body p-3">
+                <div class="card-header px-0 py-1">
+                    <h5 class="mb-0">Buy Airtime</h5>
+                    <p class="text-sm mb-0">Fill in the form below to purchase airtime</p>
+                </div>        
+              <form action="" method="post">
+                <div class="form-group">
+                    <label for="">Country Code</label>
+                    <input type="text" class="form-control" id="country_code" name="country_code" 
+                    placeholder="Enter Country Code (e.g., US, NG)" required aria-describedby="helpId"> 
+                    <div class="form-group"> </div>
+                    <label for="">Customer phone</label>
+                    <input type="text" class="form-control" id="customer" name="customer" 
+                    placeholder="Customer Phone number" required aria-describedby="helpId">
+                    </div>
+                    <div class="col-lg col md-6 col-sm-12">
+                    <div class="form-group">
+                    <label for="">Amount</label>
+                    <input type="number" class="form-control" id="amount" name="amount" 
+                    placeholder="Enter Amount" required aria-describedby="helpId">
                 </div>
-              </div>
-        </div>  
-        <div class="text-center  mt-3 mb-3">
-          <a href="javascript:;" class="btn bg-gradient-dark mb-2 px-5 up">Add Funds</a>
-          
+                <div class="form-group input-group-static mb-4">
+                        <label>Network </label>
+                        <select class="form-control" name="network" required>
+                          <option value="" disabled selected>Select Network</option>
+                          <option value="MTN">MTN</option>
+                          <option value="GLO">GLO</option>
+                          <option value="AIRTEL">AIRTEL</option>
+                          <option value="9MOBILE">9MOBILE</option>
+                        </select>
+                      </div>
+                    </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Buy Airtime</button>                     
+              </form>
+        </div>
     </div>
+        </div>
+        </div>
       <?php
     ade_include('pages/layout/footer_text');
     ?>
      
-    </div>
+    
   </main>
 <?php
 

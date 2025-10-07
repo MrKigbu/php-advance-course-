@@ -35,7 +35,7 @@ section('contentDashboard');
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group">
               <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
+              <input type="search" id="site-search" name="q" class="form-control" placeholder="Type here...">
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
@@ -68,12 +68,15 @@ section('contentDashboard');
                 <div class="card-body pt-4 text-center">
                   <h2 class="text-white mb-0 mt-2 up">Wallet Balance</h2>
                   <h1 class="text-white mb-0 up">$25,800</h1>
-                  <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Add more funds to your wallet</span>                  
+                  <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">
+                    Add more funds to your wallet
+                  </span>                  
                 </div>
               </div>
         </div>  
         <div class="text-center  mt-3 mb-3">
-          <a href="javascript:;" class="btn bg-gradient-dark mb-2 px-5 up">Add Funds</a>
+          <a href="javascript:;" class="btn bg-gradient-dark mb-2 px-5 up"
+          onclick="loadModal()">Add Funds</a>
           
     </div>
       <?php
@@ -82,7 +85,151 @@ section('contentDashboard');
      
     </div>
   </main>
+<!-- Modal -->
+<div class="modal fade" id="addFundWallet" tabindex="-1" aria-labelledby="addFundWalletLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addFundWalletLabel"> Fund Wallet </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" id="addFund">
+        <div class="form-group mb-4">
+          <label for="amount">Enter amount</label>
+            <input type="number" name="amount" id="amount" class="form-control" placeholder="Enter Amount">
+          </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn bg-gradient-primary w-100" >Add Funds</button>
+        </div>
+       </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <?php
 
 endsection();
+pushScript("scripts");
+
+?>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<script>
+  let loadModal = () => {
+    //do something...
+    $('#addFundWallet').modal('show');
+  }
+
+
+   function makePayment(amount = 1000) {
+	FlutterwaveCheckout({
+		public_key: 'FLWPUBK_TEST-024eca5b01b91a28822c0e1f312ce43f-X',
+		tx_ref: "<?php echo time(); ?>",
+		amount: amount,
+		currency: 'NGN',
+		payment_options: 'card, mobilemoneyghana, ussd',
+		
+
+		customer: {
+			email: "<?php echo htmlentities(auth()->getEmail())?>",
+			phone_number:  "<?php echo htmlentities(auth()->getPhone())?>",
+			name:  "<?php echo htmlentities(auth()->getFirstName())?>",
+		},    
+    meta: {
+      tokenization: true
+    },
+		customizations: {
+			title: 'Add fund',
+			description: 'Fund your wallet',
+			logo: 'https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg',
+		},
+      callback: function(payment) {
+       
+        //get the transaction_id
+        let transaction_id = payment.transaction_id;
+        console.log(transaction_id);
+        
+        //verify payment 
+       
+       // ajax
+        $.ajax({
+          type: "GET",
+          url: "<?php echo url('user/verify-transaction'); ?>/"  +
+          transaction_id,
+          data: {},
+          dataType: "json",
+          beforeSend: function(){
+            //show loader 
+            Swal.fire ({
+              icon: 'info',
+              title: 'please wait...',
+              html: 'verifying payment',
+              allowOutsideClick: false,
+              didOpen: () => {
+                Swal.showLoading()
+              }
+            });
+          },
+          success: function (response) {
+            console.log('verification Response:', response); 
+            Swal.fire({
+              icon: 'success',
+              title: 'payment Verified!',
+              text: 'Your walet has been funded successfully.'
+            });           
+          },
+          error: function(error) {
+         //Swal fire alert 
+          Swal.fire ({
+              icon: 'error',
+              title: 'payment not complete',
+              text: 'please try again.'
+            });
+          }
+        });
+
+      },
+      onclose: function(incomplete) {
+        if (incomplete || window.verified === false) {
+           //alert Swal
+       Swal.fire({
+        title: 'payment Cancelled',
+        text: "you have cancelled your payment",
+        icon: 'error',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+       });
+        }
+      }
+	});
+}
+
+//jquerry
+$(document).ready(function () {
+  //submit #addFund
+  $("#addFund").submit(function (e) { 
+    e.preventDefault();
+    let amount = $("input[name='amount']").val();
+    if (amount==="") {
+      alert("please enter amount");
+      return false;
+    }
+    //make payment 
+    makePayment(amount);
+
+    //close modal 
+    $('#addFundWallet').modal('hide');
+    
+  });
+});
+</script>
+<?php
+endPushScript();
 extend('pages/layout/app', 'contentDashboard');

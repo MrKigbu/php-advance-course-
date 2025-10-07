@@ -34,7 +34,8 @@ section('contentAuth');
     <div class="mb-3">
       <div class="form-group">
         <label for="phone_number">Phone Number</label>
-        <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="phone_number-addon">
+        <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone Number">
+
       </div>
     </div>
 

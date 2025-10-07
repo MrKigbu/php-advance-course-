@@ -1,7 +1,9 @@
 <?php
+pushScript('header_title');
+echo $title;
+endPushScript();
 section('contentDashboard');
 ?>
-
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
@@ -57,32 +59,123 @@ section('contentDashboard');
         </div>
       </div>
     </nav>
-    <!-- End Navbar -->      
-        
-      <div class ="container-fluid py-4">
-    <!--wallet content here-->     
-    <div class="row justify-content-center  mb-5" >
-        <div class="col-6">
-            <div class="card card-background card-background-mask-info h-100 tilt" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
-                <div class="full-background" style="background-image: url('<?php echo assets('assets_admin/img/curved-images/white-curved.jpeg'); ?>"></div>
-                <div class="card-body pt-4 text-center">
-                  <h2 class="text-white mb-0 mt-2 up">Subscription Balance</h2>
-                  <h1 class="text-white mb-0 up">5,800 units</h1>
-                  <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Add more funds to your account</span>                  
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+        <!-- Wallet content here -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-header px-0 py-1">
+                            <h6 class="">Buy Airtime</h6>
+                        </div>
+                        <form action="" method="post" id="buyAirtime">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="">Country Code</label>
+                                        <input type="text" name="country_code" id="" class="form-control" placeholder="Country Code" aria-describedby="helpId">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Customer Phone</label>
+                                        <input type="text" name="customer" id="" class="form-control" placeholder="Customer phone" aria-describedby="helpId">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="">Amount</label>
+                                        <input type="number" name="amount" id="" class="form-control" placeholder="Amount" aria-describedby="helpId">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Type</label>
+                                        <input type="text" name="type" placeholder="Enter type" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn bg-gradient-primary">Buy Airtime</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
-        </div>  
-        <div class="text-center  mt-3 mb-3">
-          <a href="javascript:;" class="btn bg-gradient-dark mb-2 px-5 up">Add Funds</a>
-          
+            </div>
+        </div>
+        <?php
+        ade_include('pages/layout/footer_text');
+        ?>
     </div>
-      <?php
-    ade_include('pages/layout/footer_text');
-    ?>
-     
-    </div>
-  </main>
+</main>
 <?php
-
 endsection();
+pushScript("scripts");
+?>
+<script>
+    $(document).ready(function() {
+        //#buyAirtime
+        $("#buyAirtime").submit(function(e) {
+            e.preventDefault();
+            //get form
+            let form = $(this);
+            //get form data
+            let data = form.serialize();
+            //ajax
+            $.ajax({
+                type: "POST",
+                url: "<?php echo url('user/buy-airtime'); ?>",
+                data,
+                dataType: "json",
+                beforeSend: function() {
+                    //Swal
+                    Swal.fire({
+                        title: "Please wait...",
+                        text: "Processing your request",
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        },
+                    });
+                },
+                success: function(response) {
+                    //Swal close
+                    Swal.close();
+                    //check if response code is 200
+                    if (response.code == 200) {
+                        //Swal
+                        Swal.fire({
+                            title: "Success",
+                            text: response.message,
+                            icon: "success",
+                            showConfirmButton: true,
+                            allowOutsideClick: true,
+                        });
+                    } else {
+                        //Swal
+                        Swal.fire({
+                            title: "Error",
+                            text: response.message,
+                            icon: "error",
+                            showConfirmButton: true,
+                            allowOutsideClick: true
+                        });
+                    }
+                },
+                error: function(error) {
+                    //Swal close
+                    Swal.close();
+                    //Swal
+                    Swal.fire({
+                        title: "Error",
+                        text: "An error occured",
+                        icon: "error",
+                        showConfirmButton: true,
+                        allowOutsideClick: true
+                    });
+                }
+            });
+        });
+    });
+</script>
+<?php
+endPushScript();
 extend('pages/layout/app', 'contentDashboard');

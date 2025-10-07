@@ -23,6 +23,10 @@
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="<?php echo assets('assets_admin/js/soft-ui-dashboard.min.js?v=1.1.0') ?>"></script>
   <script src="<?php echo assets ("assets/js/plugins/blockUI.js")?>?v=<?php echo time(); ?>" type="text/javascript"></script>
+  <?php
+    //load additional scripts
+    ade_yeild('scripts');
+  ?>
 </body>
 
 </html>
